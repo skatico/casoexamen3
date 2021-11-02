@@ -1,0 +1,744 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="CORREO" Type="varchar2" MaxLength="50" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="ULTIMA_CONEXION" Type="timestamp" Precision="6" />
+        </EntityType>
+        <EntityType Name="ASESORIA">
+          <Key>
+            <PropertyRef Name="ID_ASESORIA" />
+          </Key>
+          <Property Name="ID_ASESORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_CAP" />
+          </Key>
+          <Property Name="ID_CAP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="ASISTENTES" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_EMP" />
+          </Key>
+          <Property Name="ID_EMP" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_EMP" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="NOM_EMP" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="NOM_REPRE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="APE_REPRE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="CORREO" Type="varchar2" MaxLength="35" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="DIREC_EMP" Type="varchar2" MaxLength="70" Nullable="false" />
+          <Property Name="NUM_TELEF" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="ID_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAGO">
+          <Key>
+            <PropertyRef Name="ID_PAGO" />
+          </Key>
+          <Property Name="ID_PAGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_PAGO" Type="date" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="METODO_PAGO" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="ID_EMP" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROFESIONAL">
+          <Key>
+            <PropertyRef Name="ID_PROF" />
+          </Key>
+          <Property Name="ID_PROF" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOM_PROF" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="APELL_PROF" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="CORREO" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="NUM_TELEF" Type="varchar2" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REPORTE">
+          <Key>
+            <PropertyRef Name="ID_REPORTE" />
+          </Key>
+          <Property Name="ID_REPORTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="RUBRO">
+          <Key>
+            <PropertyRef Name="ID_RUBRO" />
+          </Key>
+          <Property Name="ID_RUBRO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMRUBRO" Type="varchar2" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VISITA">
+          <Key>
+            <PropertyRef Name="ID_VISITA" />
+          </Key>
+          <Property Name="ID_VISITA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="ID_PROF" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="SYS_C007117">
+          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUBRO">
+              <PropertyRef Name="ID_RUBRO" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ID_RUBRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007118">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="1" />
+          <End Role="VISITA" Type="Self.VISITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROF" />
+            </Principal>
+            <Dependent Role="VISITA">
+              <PropertyRef Name="ID_PROF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007119">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_EMP" />
+            </Principal>
+            <Dependent Role="PAGO">
+              <PropertyRef Name="ID_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_CREATE_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_FECHA_ACT" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_ACT" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_CREATE_ASESORIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_FECHA_ASE" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_ASE" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_CREATE_CAPACITACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_FECHA_CAP" Type="date" Mode="In" />
+          <Parameter Name="V_ASISTENTES_CAP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_CAP" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_CREATE_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_RUT_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_NOM_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_NOM_REPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="V_APE_REPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="V_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="V_DIREC_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_NUM_TELEF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_ID_RUBRO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_CREATE_PAGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_FECHA_PAGO" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_PAGO" Type="varchar2" Mode="In" />
+          <Parameter Name="V_METODO_PAGO" Type="varchar2" Mode="In" />
+          <Parameter Name="V_ID_EMP" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_CREATE_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_NOM_PROF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_APELL_PROF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_RUT_PROF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="V_NUM_TELEF" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_CREATE_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_FECHA_REP" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_REP" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_CREATE_VISITA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_FECHA_VIS" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_VIS" Type="varchar2" Mode="In" />
+          <Parameter Name="V_ID_PROF_VIS" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_ACTIVIDAD" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_ASESORIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_ASESORIA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_CAPACITACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_CAP" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_EMP" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_PAGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_PAGO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_PROFESIONAL" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_REPORTE" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_VISITA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_VISITA" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_ACTIVIDAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_ACTIVIDAD" Type="number" Mode="In" />
+          <Parameter Name="V_FECHA_ACT" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_ACT" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_ASESORIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_ASESORIA" Type="number" Mode="In" />
+          <Parameter Name="V_FECHA_ASE" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_ASE" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_CAPACITACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_CAP" Type="number" Mode="In" />
+          <Parameter Name="V_FECHA_CAP" Type="date" Mode="In" />
+          <Parameter Name="V_ASISTENTES_CAP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_CAP" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_EMP" Type="number" Mode="In" />
+          <Parameter Name="V_RUT_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_NOM_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_NOM_REPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="V_APE_REPRE" Type="varchar2" Mode="In" />
+          <Parameter Name="V_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="V_PASSWORD" Type="varchar2" Mode="In" />
+          <Parameter Name="V_DIREC_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="V_NUM_TELEF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_ID_RUBRO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_PAGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_PAGO" Type="number" Mode="In" />
+          <Parameter Name="V_FECHA_PAGO" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_PAGO" Type="varchar2" Mode="In" />
+          <Parameter Name="V_METODO_PAGO" Type="varchar2" Mode="In" />
+          <Parameter Name="V_ID_EMP" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_PROFESIONAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_PROFESIONAL" Type="number" Mode="In" />
+          <Parameter Name="V_NOM_PROF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_APELL_PROF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_RUT_PROF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_CORREO" Type="varchar2" Mode="In" />
+          <Parameter Name="V_PASSWORD_PROF" Type="varchar2" Mode="In" />
+          <Parameter Name="V_NUM_TELEF" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_REPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_REPORTE" Type="number" Mode="In" />
+          <Parameter Name="V_FECHA_REP" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_REP" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_VISITA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CASOEXAMEN">
+          <Parameter Name="V_ID_VISITA" Type="number" Mode="In" />
+          <Parameter Name="V_FECHA_VIS" Type="date" Mode="In" />
+          <Parameter Name="V_DESCRIPCION_VIS" Type="varchar2" Mode="In" />
+          <Parameter Name="V_ID_PROF_VIS" Type="number" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="ASESORIA" EntityType="Self.ASESORIA" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="CAPACITACION" EntityType="Self.CAPACITACION" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="PAGO" EntityType="Self.PAGO" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="PROFESIONAL" EntityType="Self.PROFESIONAL" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="REPORTE" EntityType="Self.REPORTE" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="RUBRO" EntityType="Self.RUBRO" Schema="CASOEXAMEN" store:Type="Tables" />
+          <EntitySet Name="VISITA" EntityType="Self.VISITA" Schema="CASOEXAMEN" store:Type="Tables" />
+          <AssociationSet Name="SYS_C007117" Association="Self.SYS_C007117">
+            <End Role="RUBRO" EntitySet="RUBRO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007118" Association="Self.SYS_C007118">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="VISITA" EntitySet="VISITA" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007119" Association="Self.SYS_C007119">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="PAGO" EntitySet="PAGO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADMIN">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ULTIMA_CONEXION" Type="DateTime" Precision="6" />
+        </EntityType>
+        <EntityType Name="ASESORIA">
+          <Key>
+            <PropertyRef Name="ID_ASESORIA" />
+          </Key>
+          <Property Name="ID_ASESORIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAPACITACION">
+          <Key>
+            <PropertyRef Name="ID_CAP" />
+          </Key>
+          <Property Name="ID_CAP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="ASISTENTES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_EMP" />
+          </Key>
+          <Property Name="ID_EMP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT_EMP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOM_EMP" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOM_REPRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APE_REPRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIREC_EMP" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUM_TELEF" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="RUBRO" Relationship="Self.SYS_C007117" FromRole="CLIENTE" ToRole="RUBRO" />
+          <NavigationProperty Name="PAGO" Relationship="Self.SYS_C007119" FromRole="CLIENTE" ToRole="PAGO" />
+        </EntityType>
+        <EntityType Name="PAGO">
+          <Key>
+            <PropertyRef Name="ID_PAGO" />
+          </Key>
+          <Property Name="ID_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_PAGO" Type="DateTime" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="METODO_PAGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_EMP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.SYS_C007119" FromRole="PAGO" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="PROFESIONAL">
+          <Key>
+            <PropertyRef Name="ID_PROF" />
+          </Key>
+          <Property Name="ID_PROF" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOM_PROF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELL_PROF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUM_TELEF" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VISITA" Relationship="Self.SYS_C007118" FromRole="PROFESIONAL" ToRole="VISITA" />
+        </EntityType>
+        <EntityType Name="REPORTE">
+          <Key>
+            <PropertyRef Name="ID_REPORTE" />
+          </Key>
+          <Property Name="ID_REPORTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RUBRO">
+          <Key>
+            <PropertyRef Name="ID_RUBRO" />
+          </Key>
+          <Property Name="ID_RUBRO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMRUBRO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.SYS_C007117" FromRole="RUBRO" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="VISITA">
+          <Key>
+            <PropertyRef Name="ID_VISITA" />
+          </Key>
+          <Property Name="ID_VISITA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PROF" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PROFESIONAL" Relationship="Self.SYS_C007118" FromRole="VISITA" ToRole="PROFESIONAL" />
+        </EntityType>
+        <Association Name="SYS_C007117">
+          <End Role="RUBRO" Type="Self.RUBRO" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUBRO">
+              <PropertyRef Name="ID_RUBRO" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ID_RUBRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007119">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="ID_EMP" />
+            </Principal>
+            <Dependent Role="PAGO">
+              <PropertyRef Name="ID_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007118">
+          <End Role="PROFESIONAL" Type="Self.PROFESIONAL" Multiplicity="1" />
+          <End Role="VISITA" Type="Self.VISITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESIONAL">
+              <PropertyRef Name="ID_PROF" />
+            </Principal>
+            <Dependent Role="VISITA">
+              <PropertyRef Name="ID_PROF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CasoExamenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" />
+          <EntitySet Name="ADMIN" EntityType="Self.ADMIN" />
+          <EntitySet Name="ASESORIA" EntityType="Self.ASESORIA" />
+          <EntitySet Name="CAPACITACION" EntityType="Self.CAPACITACION" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="PAGO" EntityType="Self.PAGO" />
+          <EntitySet Name="PROFESIONAL" EntityType="Self.PROFESIONAL" />
+          <EntitySet Name="REPORTE" EntityType="Self.REPORTE" />
+          <EntitySet Name="RUBRO" EntityType="Self.RUBRO" />
+          <EntitySet Name="VISITA" EntityType="Self.VISITA" />
+          <AssociationSet Name="SYS_C007117" Association="Self.SYS_C007117">
+            <End Role="RUBRO" EntitySet="RUBRO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007119" Association="Self.SYS_C007119">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="PAGO" EntitySet="PAGO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007118" Association="Self.SYS_C007118">
+            <End Role="PROFESIONAL" EntitySet="PROFESIONAL" />
+            <End Role="VISITA" EntitySet="VISITA" />
+          </AssociationSet>
+          <FunctionImport Name="SP_CREATE_ACTIVIDAD">
+            <Parameter Name="V_FECHA_ACT" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_ACT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CREATE_ASESORIA">
+            <Parameter Name="V_FECHA_ASE" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_ASE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CREATE_CAPACITACION">
+            <Parameter Name="V_FECHA_CAP" Mode="In" Type="DateTime" />
+            <Parameter Name="V_ASISTENTES_CAP" Mode="In" Type="String" />
+            <Parameter Name="V_DESCRIPCION_CAP" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CREATE_CLIENTE">
+            <Parameter Name="V_RUT_EMP" Mode="In" Type="String" />
+            <Parameter Name="V_NOM_EMP" Mode="In" Type="String" />
+            <Parameter Name="V_NOM_REPRE" Mode="In" Type="String" />
+            <Parameter Name="V_APE_REPRE" Mode="In" Type="String" />
+            <Parameter Name="V_CORREO" Mode="In" Type="String" />
+            <Parameter Name="V_DIREC_EMP" Mode="In" Type="String" />
+            <Parameter Name="V_NUM_TELEF" Mode="In" Type="String" />
+            <Parameter Name="V_ID_RUBRO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CREATE_PAGO">
+            <Parameter Name="V_FECHA_PAGO" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_PAGO" Mode="In" Type="String" />
+            <Parameter Name="V_METODO_PAGO" Mode="In" Type="String" />
+            <Parameter Name="V_ID_EMP" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CREATE_PROFESIONAL">
+            <Parameter Name="V_NOM_PROF" Mode="In" Type="String" />
+            <Parameter Name="V_APELL_PROF" Mode="In" Type="String" />
+            <Parameter Name="V_RUT_PROF" Mode="In" Type="String" />
+            <Parameter Name="V_CORREO" Mode="In" Type="String" />
+            <Parameter Name="V_NUM_TELEF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CREATE_REPORTE">
+            <Parameter Name="V_FECHA_REP" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_REP" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CREATE_VISITA">
+            <Parameter Name="V_FECHA_VIS" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_VIS" Mode="In" Type="String" />
+            <Parameter Name="V_ID_PROF_VIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_ACTIVIDAD">
+            <Parameter Name="V_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_ASESORIA">
+            <Parameter Name="V_ID_ASESORIA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_CAPACITACION">
+            <Parameter Name="V_ID_CAP" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_CLIENTE">
+            <Parameter Name="V_ID_EMP" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_PAGO">
+            <Parameter Name="V_ID_PAGO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_PROFESIONAL">
+            <Parameter Name="V_ID_PROFESIONAL" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_REPORTE">
+            <Parameter Name="V_ID_REPORTE" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_VISITA">
+            <Parameter Name="V_ID_VISITA" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_ACTIVIDAD">
+            <Parameter Name="V_ID_ACTIVIDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="V_FECHA_ACT" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_ACT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_ASESORIA">
+            <Parameter Name="V_ID_ASESORIA" Mode="In" Type="Decimal" />
+            <Parameter Name="V_FECHA_ASE" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_ASE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_CAPACITACION">
+            <Parameter Name="V_ID_CAP" Mode="In" Type="Decimal" />
+            <Parameter Name="V_FECHA_CAP" Mode="In" Type="DateTime" />
+            <Parameter Name="V_ASISTENTES_CAP" Mode="In" Type="String" />
+            <Parameter Name="V_DESCRIPCION_CAP" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_CLIENTE">
+            <Parameter Name="V_ID_EMP" Mode="In" Type="Decimal" />
+            <Parameter Name="V_RUT_EMP" Mode="In" Type="String" />
+            <Parameter Name="V_NOM_EMP" Mode="In" Type="String" />
+            <Parameter Name="V_NOM_REPRE" Mode="In" Type="String" />
+            <Parameter Name="V_APE_REPRE" Mode="In" Type="String" />
+            <Parameter Name="V_CORREO" Mode="In" Type="String" />
+            <Parameter Name="V_PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="V_DIREC_EMP" Mode="In" Type="String" />
+            <Parameter Name="V_NUM_TELEF" Mode="In" Type="String" />
+            <Parameter Name="V_ID_RUBRO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_PAGO">
+            <Parameter Name="V_ID_PAGO" Mode="In" Type="Decimal" />
+            <Parameter Name="V_FECHA_PAGO" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_PAGO" Mode="In" Type="String" />
+            <Parameter Name="V_METODO_PAGO" Mode="In" Type="String" />
+            <Parameter Name="V_ID_EMP" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_PROFESIONAL">
+            <Parameter Name="V_ID_PROFESIONAL" Mode="In" Type="Decimal" />
+            <Parameter Name="V_NOM_PROF" Mode="In" Type="String" />
+            <Parameter Name="V_APELL_PROF" Mode="In" Type="String" />
+            <Parameter Name="V_RUT_PROF" Mode="In" Type="String" />
+            <Parameter Name="V_CORREO" Mode="In" Type="String" />
+            <Parameter Name="V_PASSWORD_PROF" Mode="In" Type="String" />
+            <Parameter Name="V_NUM_TELEF" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_REPORTE">
+            <Parameter Name="V_ID_REPORTE" Mode="In" Type="Decimal" />
+            <Parameter Name="V_FECHA_REP" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_REP" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_VISITA">
+            <Parameter Name="V_ID_VISITA" Mode="In" Type="Decimal" />
+            <Parameter Name="V_FECHA_VIS" Mode="In" Type="DateTime" />
+            <Parameter Name="V_DESCRIPCION_VIS" Mode="In" Type="String" />
+            <Parameter Name="V_ID_PROF_VIS" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="CasoExamenEntities">
+          <EntitySetMapping Name="ACTIVIDAD">
+            <EntityTypeMapping TypeName="Model.ACTIVIDAD">
+              <MappingFragment StoreEntitySet="ACTIVIDAD">
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADMIN">
+            <EntityTypeMapping TypeName="Model.ADMIN">
+              <MappingFragment StoreEntitySet="ADMIN">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ULTIMA_CONEXION" ColumnName="ULTIMA_CONEXION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASESORIA">
+            <EntityTypeMapping TypeName="Model.ASESORIA">
+              <MappingFragment StoreEntitySet="ASESORIA">
+                <ScalarProperty Name="ID_ASESORIA" ColumnName="ID_ASESORIA" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAPACITACION">
+            <EntityTypeMapping TypeName="Model.CAPACITACION">
+              <MappingFragment StoreEntitySet="CAPACITACION">
+                <ScalarProperty Name="ID_CAP" ColumnName="ID_CAP" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ASISTENTES" ColumnName="ASISTENTES" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="Model.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="RUT_EMP" ColumnName="RUT_EMP" />
+                <ScalarProperty Name="NOM_EMP" ColumnName="NOM_EMP" />
+                <ScalarProperty Name="NOM_REPRE" ColumnName="NOM_REPRE" />
+                <ScalarProperty Name="APE_REPRE" ColumnName="APE_REPRE" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="DIREC_EMP" ColumnName="DIREC_EMP" />
+                <ScalarProperty Name="NUM_TELEF" ColumnName="NUM_TELEF" />
+                <ScalarProperty Name="ID_RUBRO" ColumnName="ID_RUBRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAGO">
+            <EntityTypeMapping TypeName="Model.PAGO">
+              <MappingFragment StoreEntitySet="PAGO">
+                <ScalarProperty Name="ID_PAGO" ColumnName="ID_PAGO" />
+                <ScalarProperty Name="FECHA_PAGO" ColumnName="FECHA_PAGO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="METODO_PAGO" ColumnName="METODO_PAGO" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESIONAL">
+            <EntityTypeMapping TypeName="Model.PROFESIONAL">
+              <MappingFragment StoreEntitySet="PROFESIONAL">
+                <ScalarProperty Name="ID_PROF" ColumnName="ID_PROF" />
+                <ScalarProperty Name="NOM_PROF" ColumnName="NOM_PROF" />
+                <ScalarProperty Name="APELL_PROF" ColumnName="APELL_PROF" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="NUM_TELEF" ColumnName="NUM_TELEF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTE">
+            <EntityTypeMapping TypeName="Model.REPORTE">
+              <MappingFragment StoreEntitySet="REPORTE">
+                <ScalarProperty Name="ID_REPORTE" ColumnName="ID_REPORTE" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RUBRO">
+            <EntityTypeMapping TypeName="Model.RUBRO">
+              <MappingFragment StoreEntitySet="RUBRO">
+                <ScalarProperty Name="ID_RUBRO" ColumnName="ID_RUBRO" />
+                <ScalarProperty Name="NOMRUBRO" ColumnName="NOMRUBRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VISITA">
+            <EntityTypeMapping TypeName="Model.VISITA">
+              <MappingFragment StoreEntitySet="VISITA">
+                <ScalarProperty Name="ID_VISITA" ColumnName="ID_VISITA" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_PROF" ColumnName="ID_PROF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_CREATE_ACTIVIDAD" FunctionName="Model.Store.SP_CREATE_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_CREATE_ASESORIA" FunctionName="Model.Store.SP_CREATE_ASESORIA" />
+          <FunctionImportMapping FunctionImportName="SP_CREATE_CAPACITACION" FunctionName="Model.Store.SP_CREATE_CAPACITACION" />
+          <FunctionImportMapping FunctionImportName="SP_CREATE_CLIENTE" FunctionName="Model.Store.SP_CREATE_CLIENTE" />
+          <FunctionImportMapping FunctionImportName="SP_CREATE_PAGO" FunctionName="Model.Store.SP_CREATE_PAGO" />
+          <FunctionImportMapping FunctionImportName="SP_CREATE_PROFESIONAL" FunctionName="Model.Store.SP_CREATE_PROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_CREATE_REPORTE" FunctionName="Model.Store.SP_CREATE_REPORTE" />
+          <FunctionImportMapping FunctionImportName="SP_CREATE_VISITA" FunctionName="Model.Store.SP_CREATE_VISITA" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_ACTIVIDAD" FunctionName="Model.Store.SP_DELETE_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_ASESORIA" FunctionName="Model.Store.SP_DELETE_ASESORIA" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_CAPACITACION" FunctionName="Model.Store.SP_DELETE_CAPACITACION" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_CLIENTE" FunctionName="Model.Store.SP_DELETE_CLIENTE" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_PAGO" FunctionName="Model.Store.SP_DELETE_PAGO" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_PROFESIONAL" FunctionName="Model.Store.SP_DELETE_PROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_REPORTE" FunctionName="Model.Store.SP_DELETE_REPORTE" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_VISITA" FunctionName="Model.Store.SP_DELETE_VISITA" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_ACTIVIDAD" FunctionName="Model.Store.SP_UPDATE_ACTIVIDAD" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_ASESORIA" FunctionName="Model.Store.SP_UPDATE_ASESORIA" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_CAPACITACION" FunctionName="Model.Store.SP_UPDATE_CAPACITACION" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_CLIENTE" FunctionName="Model.Store.SP_UPDATE_CLIENTE" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_PAGO" FunctionName="Model.Store.SP_UPDATE_PAGO" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_PROFESIONAL" FunctionName="Model.Store.SP_UPDATE_PROFESIONAL" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_REPORTE" FunctionName="Model.Store.SP_UPDATE_REPORTE" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_VISITA" FunctionName="Model.Store.SP_UPDATE_VISITA" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

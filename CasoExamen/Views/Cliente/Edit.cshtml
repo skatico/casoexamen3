@@ -1,0 +1,40 @@
+﻿@model CasoExamen.Negocio.Cliente
+@{
+    ViewBag.Title = "Modificar";
+}
+
+<h2>Modificando Cliente</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(c => c.Id)
+    @Html.LabelFor(c => c.Rut)
+    @Html.TextBoxFor(c => c.Rut)
+    <br />
+    @Html.LabelFor(c => c.NomEmpresa)
+    @Html.TextBoxFor(c => c.NomEmpresa)
+    <br />
+    @Html.LabelFor(c => c.NomRepre)
+    @Html.TextBoxFor(c => c.NomRepre)
+    <br />
+    @Html.LabelFor(c => c.ApeRepre)
+    @Html.TextBoxFor(c => c.ApeRepre)
+    <br />
+    @Html.LabelFor(c => c.Correo)
+    @Html.TextBoxFor(c => c.Correo)
+    <br />
+    @Html.LabelFor(c => c.Password)
+    @Html.TextBoxFor(c => c.Password)
+    <br />
+    @Html.LabelFor(c => c.Direccion)
+    @Html.TextBoxFor(c => c.Direccion)
+    <br />
+    @Html.LabelFor(c => c.Telefono)
+    @Html.TextBoxFor(c => c.Telefono)
+    <br />
+    @Html.LabelFor(c => c.RubroId, "Rubros")
+    @Html.DropDownListFor(c => c.RubroId, new SelectList(ViewBag.rubros, "Id", "Nombre"))
+    <br />
+    <button>Modificar</button>
+}
+

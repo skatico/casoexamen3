@@ -1,0 +1,29 @@
+﻿@model CasoExamen.Negocio.Profesional
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Modificando Profesional</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(p => p.Id)
+    @Html.LabelFor(p => p.Nombre)
+    @Html.TextBoxFor(p => p.Nombre)
+    <br />
+    @Html.LabelFor(p => p.Apellido)
+    @Html.TextBoxFor(p => p.Apellido)
+    <br />
+    @Html.LabelFor(p => p.Rut)
+    @Html.TextBoxFor(p => p.Rut)
+    <br />
+    @Html.LabelFor(p => p.Correo)
+    @Html.TextBoxFor(p => p.Correo)
+    <br />
+    @Html.LabelFor(p => p.Password)
+    @Html.TextBoxFor(p => p.Password)
+    <br />
+    @Html.LabelFor(p => p.Numero)
+    @Html.TextBoxFor(p => p.Numero)
+    <br />
+    <button>Modificar</button>
+}

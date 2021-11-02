@@ -1,0 +1,22 @@
+﻿@model CasoExamen.Negocio.Admin
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Inicia Sesion como Administrador</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(a => a.Correo, "Correo Electronico")
+    <br />
+    @Html.TextBoxFor(a => a.Correo, new { type = "email" })
+    <br />
+    @Html.LabelFor(a => a.Password, "Contraseña")
+    <br />
+    @Html.PasswordFor(a => a.Password)
+    <br />
+    <button>Ingresar</button>
+
+}
+<br />
+@TempData["mensaje"]
